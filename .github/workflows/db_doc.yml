@@ -2,25 +2,21 @@ name: Generate Database Documentation
 
 on:
   push:
-    paths:
-      - '**.db'        # runs whenever a .db file is pushed
-      - 'db_doc.py'    # also runs if the script itself is updated
+    branches:
+      - main
 
 jobs:
   document:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          lfs: true          # pulls LFS files so the .db is available
-
+          lfs: true
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Find and document all .db files
         run: |
           for db in $(find . -name "*.db"); do
@@ -29,10 +25,9 @@ jobs:
             base=$(basename "$db" .db)
             mv db_doc.txt "${base}_doc.txt"
           done
-
       - name: Commit documentation
         run: |
-          git config user.name  "github-actions[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add *_doc.txt
           git diff --staged --quiet || git commit -m "Auto-generate database documentation [skip ci]"
