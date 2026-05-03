@@ -1,0 +1,1176 @@
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  DATABASE DOCUMENTATION
+  File    : /home/runner/work/AdventureWorks-55MB-ETL/AdventureWorks-55MB-ETL/AdventureWorks.db
+  Size    : 51.81 MB
+  Created : 2026-05-03 18:24
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+═════════════════════════════════════════ DATABASE SUMMARY ═════════════════════════════════════════
+
+  Tables                    19
+  Total Columns             263
+  Total Rows                225,322
+  Indexes                   19
+  Foreign Keys              30
+  File Size                 51.81 MB
+  SQLite Version            3.45.1
+
+  Largest Tables (by row count):
+    FactInternetSalesReason     64,515  ████████████████████████████████████████
+    FactInternetSales           60,398  █████████████████████████████████████
+    FactResellerSales           58,820  ████████████████████████████████████
+    DimCustomer                 18,484  ███████████
+    FactCurrencyRate            14,264  ████████
+    DimDate                      3,652  ██
+    FactSurveyResponse           2,727  █
+    DimReseller                    701  
+    DimGeography                   655  
+    DimProduct                     606  
+    DimEmployee                    296  
+    DimCurrency                    105  
+    DimProductSubcategory           37  
+    DimPromotion                    16  
+    DimOrganization                 14  
+    DimSalesTerritory               11  
+    DimSalesReason                  10  
+    DimDepartmentGroup               7  
+    DimProductCategory               4  
+
+
+══════════════════════════════════════════ TABLE SUMMARY ═══════════════════════════════════════════
+
+  Table                           Columns     Row Count     Primary Key(s)                          
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  DimCurrency                     3           105           CurrencyKey                             
+  DimCustomer                     29          18,484        CustomerKey                             
+  DimDate                         19          3,652         DateKey                                 
+  DimDepartmentGroup              3           7             DepartmentGroupKey                      
+  DimEmployee                     31          296           EmployeeKey                             
+  DimGeography                    11          655           GeographyKey                            
+  DimOrganization                 5           14            OrganizationKey                         
+  DimProduct                      36          606           ProductKey                              
+  DimProductCategory              5           4             ProductCategoryKey                      
+  DimProductSubcategory           6           37            ProductSubcategoryKey                   
+  DimPromotion                    16          16            PromotionKey                            
+  DimReseller                     20          701           ResellerKey                             
+  DimSalesReason                  4           10            SalesReasonKey                          
+  DimSalesTerritory               6           11            SalesTerritoryKey                       
+  FactCurrencyRate                5           14,264        CurrencyKey, DateKey                    
+  FactInternetSales               26          60,398        SalesOrderNumber, SalesOrderLineNumber  
+  FactInternetSalesReason         3           64,515        SalesOrderNumber, SalesOrderLineNumber, SalesReasonKey
+  FactResellerSales               27          58,820        SalesOrderNumber, SalesOrderLineNumber  
+  FactSurveyResponse              8           2,727         SurveyResponseKey                       
+
+════════════════════════════════════════ TABLE: DimCurrency ════════════════════════════════════════
+
+  Rows: 105
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     CurrencyKey                   int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     CurrencyAlternateKey          nchar(3)        NOT NULL    —                     —   
+  2     CurrencyName                  nvarchar(50)    NOT NULL    —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimCurrency_1  →  (CurrencyKey)
+
+
+════════════════════════════════════════ TABLE: DimCustomer ════════════════════════════════════════
+
+  Rows: 18,484
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     CustomerKey                   int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     GeographyKey                  INT             NULL        —                     —   
+  2     CustomerAlternateKey          nvarchar(15)    NOT NULL    —                     —   
+  3     Title                         nvarchar(8)     NULL        —                     —   
+  4     FirstName                     nvarchar(50)    NULL        —                     —   
+  5     MiddleName                    nvarchar(50)    NULL        —                     —   
+  6     LastName                      nvarchar(50)    NULL        —                     —   
+  7     NameStyle                     bit             NULL        —                     —   
+  8     BirthDate                     date            NULL        —                     —   
+  9     MaritalStatus                 nchar(1)        NULL        —                     —   
+  10    Suffix                        nvarchar(10)    NULL        —                     —   
+  11    Gender                        nvarchar(1)     NULL        —                     —   
+  12    EmailAddress                  nvarchar(50)    NULL        —                     —   
+  13    YearlyIncome                  money           NULL        —                     —   
+  14    TotalChildren                 tinyint         NULL        —                     —   
+  15    NumberChildrenAtHome          tinyint         NULL        —                     —   
+  16    EnglishEducation              nvarchar(40)    NULL        —                     —   
+  17    SpanishEducation              nvarchar(40)    NULL        —                     —   
+  18    FrenchEducation               nvarchar(40)    NULL        —                     —   
+  19    EnglishOccupation             nvarchar(100)   NULL        —                     —   
+  20    SpanishOccupation             nvarchar(100)   NULL        —                     —   
+  21    FrenchOccupation              nvarchar(100)   NULL        —                     —   
+  22    HouseOwnerFlag                nchar(1)        NULL        —                     —   
+  23    NumberCarsOwned               tinyint         NULL        —                     —   
+  24    AddressLine1                  nvarchar(120)   NULL        —                     —   
+  25    AddressLine2                  nvarchar(120)   NULL        —                     —   
+  26    Phone                         nvarchar(20)    NULL        —                     —   
+  27    DateFirstPurchase             date            NULL        —                     —   
+  28    CommuteDistance               nvarchar(15)    NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimCustomer_1  →  (CustomerKey)
+
+  Foreign Keys:
+    GeographyKey  →  DimGeography.GeographyKey
+
+
+══════════════════════════════════════════ TABLE: DimDate ══════════════════════════════════════════
+
+  Rows: 3,652
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     DateKey                       INT             NOT NULL    —                     1   
+  1     FullDateAlternateKey          date            NOT NULL    —                     —   
+  2     DayNumberOfWeek               tinyint         NOT NULL    —                     —   
+  3     EnglishDayNameOfWeek          nvarchar(10)    NOT NULL    —                     —   
+  4     SpanishDayNameOfWeek          nvarchar(10)    NOT NULL    —                     —   
+  5     FrenchDayNameOfWeek           nvarchar(10)    NOT NULL    —                     —   
+  6     DayNumberOfMonth              tinyint         NOT NULL    —                     —   
+  7     DayNumberOfYear               smallint        NOT NULL    —                     —   
+  8     WeekNumberOfYear              tinyint         NOT NULL    —                     —   
+  9     EnglishMonthName              nvarchar(10)    NOT NULL    —                     —   
+  10    SpanishMonthName              nvarchar(10)    NOT NULL    —                     —   
+  11    FrenchMonthName               nvarchar(10)    NOT NULL    —                     —   
+  12    MonthNumberOfYear             tinyint         NOT NULL    —                     —   
+  13    CalendarQuarter               tinyint         NOT NULL    —                     —   
+  14    CalendarYear                  smallint        NOT NULL    —                     —   
+  15    CalendarSemester              tinyint         NOT NULL    —                     —   
+  16    FiscalQuarter                 tinyint         NOT NULL    —                     —   
+  17    FiscalYear                    smallint        NOT NULL    —                     —   
+  18    FiscalSemester                tinyint         NOT NULL    —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimDate_1  →  (DateKey)
+
+
+════════════════════════════════════ TABLE: DimDepartmentGroup ═════════════════════════════════════
+
+  Rows: 7
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     DepartmentGroupKey            int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     ParentDepartmentGroupKey      INT             NULL        —                     —   
+  2     DepartmentGroupName           nvarchar(50)    NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimDepartmentGroup_1  →  (DepartmentGroupKey)
+
+
+════════════════════════════════════════ TABLE: DimEmployee ════════════════════════════════════════
+
+  Rows: 296
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     EmployeeKey                   int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     ParentEmployeeKey             INT             NULL        —                     —   
+  2     EmployeeNationalIDAlternateKey  nvarchar(15)    NULL        —                     —   
+  3     ParentEmployeeNationalIDAlternateKey  nvarchar(15)    NULL        —                     —   
+  4     SalesTerritoryKey             INT             NULL        —                     —   
+  5     FirstName                     nvarchar(50)    NOT NULL    —                     —   
+  6     LastName                      nvarchar(50)    NOT NULL    —                     —   
+  7     MiddleName                    nvarchar(50)    NULL        —                     —   
+  8     NameStyle                     bit             NOT NULL    —                     —   
+  9     Title                         nvarchar(50)    NULL        —                     —   
+  10    HireDate                      date            NULL        —                     —   
+  11    BirthDate                     date            NULL        —                     —   
+  12    LoginID                       nvarchar(256)   NULL        —                     —   
+  13    EmailAddress                  nvarchar(50)    NULL        —                     —   
+  14    Phone                         nvarchar(25)    NULL        —                     —   
+  15    MaritalStatus                 nchar(1)        NULL        —                     —   
+  16    EmergencyContactName          nvarchar(50)    NULL        —                     —   
+  17    EmergencyContactPhone         nvarchar(25)    NULL        —                     —   
+  18    SalariedFlag                  bit             NULL        —                     —   
+  19    Gender                        nchar(1)        NULL        —                     —   
+  20    PayFrequency                  tinyint         NULL        —                     —   
+  21    BaseRate                      money           NULL        —                     —   
+  22    VacationHours                 smallint        NULL        —                     —   
+  23    SickLeaveHours                smallint        NULL        —                     —   
+  24    CurrentFlag                   bit             NOT NULL    —                     —   
+  25    SalesPersonFlag               bit             NOT NULL    —                     —   
+  26    DepartmentName                nvarchar(50)    NULL        —                     —   
+  27    StartDate                     date            NULL        —                     —   
+  28    EndDate                       date            NULL        —                     —   
+  29    Status                        nvarchar(50)    NULL        —                     —   
+  30    EmployeePhoto                 varbinary       NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimEmployee_1  →  (EmployeeKey)
+
+  Foreign Keys:
+    SalesTerritoryKey  →  DimSalesTerritory.SalesTerritoryKey
+
+
+═══════════════════════════════════════ TABLE: DimGeography ════════════════════════════════════════
+
+  Rows: 655
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     GeographyKey                  int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     City                          nvarchar(30)    NULL        —                     —   
+  2     StateProvinceCode             nvarchar(3)     NULL        —                     —   
+  3     StateProvinceName             nvarchar(50)    NULL        —                     —   
+  4     CountryRegionCode             nvarchar(3)     NULL        —                     —   
+  5     EnglishCountryRegionName      nvarchar(50)    NULL        —                     —   
+  6     SpanishCountryRegionName      nvarchar(50)    NULL        —                     —   
+  7     FrenchCountryRegionName       nvarchar(50)    NULL        —                     —   
+  8     PostalCode                    nvarchar(15)    NULL        —                     —   
+  9     SalesTerritoryKey             INT             NULL        —                     —   
+  10    IpAddressLocator              nvarchar(15)    NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimGeography_1  →  (GeographyKey)
+
+  Foreign Keys:
+    SalesTerritoryKey  →  DimSalesTerritory.SalesTerritoryKey
+
+
+══════════════════════════════════════ TABLE: DimOrganization ══════════════════════════════════════
+
+  Rows: 14
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     OrganizationKey               int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     ParentOrganizationKey         INT             NULL        —                     —   
+  2     PercentageOfOwnership         nvarchar(16)    NULL        —                     —   
+  3     OrganizationName              nvarchar(50)    NULL        —                     —   
+  4     CurrencyKey                   INT             NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimOrganization_1  →  (OrganizationKey)
+
+  Foreign Keys:
+    CurrencyKey  →  DimCurrency.CurrencyKey
+
+
+════════════════════════════════════════ TABLE: DimProduct ═════════════════════════════════════════
+
+  Rows: 606
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     ProductKey                    int IDENTITY(1,1)  NULL        —                     1   
+  1     ProductAlternateKey           nvarchar(25)    NULL        —                     —   
+  2     ProductSubcategoryKey         INT             NULL        —                     —   
+  3     WeightUnitMeasureCode         nchar(3)        NULL        —                     —   
+  4     SizeUnitMeasureCode           nchar(3)        NULL        —                     —   
+  5     EnglishProductName            nvarchar(50)    NOT NULL    —                     —   
+  6     SpanishProductName            nvarchar(50)    NOT NULL    —                     —   
+  7     FrenchProductName             nvarchar(50)    NOT NULL    —                     —   
+  8     StandardCost                  money           NULL        —                     —   
+  9     FinishedGoodsFlag             bit             NOT NULL    —                     —   
+  10    Color                         nvarchar(15)    NOT NULL    —                     —   
+  11    SafetyStockLevel              smallint        NULL        —                     —   
+  12    ReorderPoint                  smallint        NULL        —                     —   
+  13    ListPrice                     money           NULL        —                     —   
+  14    Size                          nvarchar(50)    NULL        —                     —   
+  15    SizeRange                     nvarchar(50)    NULL        —                     —   
+  16    Weight                        float           NULL        —                     —   
+  17    DaysToManufacture             INT             NULL        —                     —   
+  18    ProductLine                   nchar(2)        NULL        —                     —   
+  19    DealerPrice                   money           NULL        —                     —   
+  20    Class                         nchar(2)        NULL        —                     —   
+  21    Style                         nchar(2)        NULL        —                     —   
+  22    ModelName                     nvarchar(50)    NULL        —                     —   
+  23    LargePhoto                    varbinary       NULL        —                     —   
+  24    EnglishDescription            nvarchar(400)   NULL        —                     —   
+  25    FrenchDescription             nvarchar(400)   NULL        —                     —   
+  26    ChineseDescription            nvarchar(400)   NULL        —                     —   
+  27    ArabicDescription             nvarchar(400)   NULL        —                     —   
+  28    HebrewDescription             nvarchar(400)   NULL        —                     —   
+  29    ThaiDescription               nvarchar(400)   NULL        —                     —   
+  30    GermanDescription             nvarchar(400)   NULL        —                     —   
+  31    JapaneseDescription           nvarchar(400)   NULL        —                     —   
+  32    TurkishDescription            nvarchar(400)   NULL        —                     —   
+  33    StartDate                     datetime        NULL        —                     —   
+  34    EndDate                       datetime        NULL        —                     —   
+  35    Status                        nvarchar(7)     NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimProduct_1  →  (ProductKey)
+
+  Foreign Keys:
+    ProductSubcategoryKey  →  DimProductSubCategory.ProductSubCategoryKey
+
+
+════════════════════════════════════ TABLE: DimProductCategory ═════════════════════════════════════
+
+  Rows: 4
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     ProductCategoryKey            int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     ProductCategoryAlternateKey   INT             NULL        —                     —   
+  2     EnglishProductCategoryName    nvarchar(50)    NOT NULL    —                     —   
+  3     SpanishProductCategoryName    nvarchar(50)    NOT NULL    —                     —   
+  4     FrenchProductCategoryName     nvarchar(50)    NOT NULL    —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimProductCategory_1  →  (ProductCategoryKey)
+
+
+═══════════════════════════════════ TABLE: DimProductSubcategory ═══════════════════════════════════
+
+  Rows: 37
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     ProductSubcategoryKey         int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     ProductSubcategoryAlternateKey  INT             NULL        —                     —   
+  2     EnglishProductSubcategoryName  nvarchar(50)    NOT NULL    —                     —   
+  3     SpanishProductSubcategoryName  nvarchar(50)    NOT NULL    —                     —   
+  4     FrenchProductSubcategoryName  nvarchar(50)    NOT NULL    —                     —   
+  5     ProductCategoryKey            INT             NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimProductSubcategory_1  →  (ProductSubcategoryKey)
+
+  Foreign Keys:
+    ProductCategoryKey  →  DimProductCategory.ProductCategoryKey
+
+
+═══════════════════════════════════════ TABLE: DimPromotion ════════════════════════════════════════
+
+  Rows: 16
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     PromotionKey                  int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     PromotionAlternateKey         INT             NULL        —                     —   
+  2     EnglishPromotionName          nvarchar(255)   NULL        —                     —   
+  3     SpanishPromotionName          nvarchar(255)   NULL        —                     —   
+  4     FrenchPromotionName           nvarchar(255)   NULL        —                     —   
+  5     DiscountPct                   float           NULL        —                     —   
+  6     EnglishPromotionType          nvarchar(50)    NULL        —                     —   
+  7     SpanishPromotionType          nvarchar(50)    NULL        —                     —   
+  8     FrenchPromotionType           nvarchar(50)    NULL        —                     —   
+  9     EnglishPromotionCategory      nvarchar(50)    NULL        —                     —   
+  10    SpanishPromotionCategory      nvarchar(50)    NULL        —                     —   
+  11    FrenchPromotionCategory       nvarchar(50)    NULL        —                     —   
+  12    StartDate                     datetime        NOT NULL    —                     —   
+  13    EndDate                       datetime        NULL        —                     —   
+  14    MinQty                        INT             NULL        —                     —   
+  15    MaxQty                        INT             NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimPromotion_1  →  (PromotionKey)
+
+
+════════════════════════════════════════ TABLE: DimReseller ════════════════════════════════════════
+
+  Rows: 701
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     ResellerKey                   int] IDENTITY(1,1  NOT NULL    —                     1   
+  1     GeographyKey                  INT             NULL        —                     —   
+  2     ResellerAlternateKey          nvarchar](15    NULL        —                     —   
+  3     Phone                         nvarchar](25    NULL        —                     —   
+  4     BusinessType                  varchar](20     NOT NULL    —                     —   
+  5     ResellerName                  nvarchar](50    NOT NULL    —                     —   
+  6     NumberEmployees               INT             NULL        —                     —   
+  7     OrderFrequency                char](1         NULL        —                     —   
+  8     OrderMonth                    tinyint         NULL        —                     —   
+  9     FirstOrderYear                INT             NULL        —                     —   
+  10    LastOrderYear                 INT             NULL        —                     —   
+  11    ProductLine                   nvarchar](50    NULL        —                     —   
+  12    AddressLine1                  nvarchar](60    NULL        —                     —   
+  13    AddressLine2                  nvarchar](60    NULL        —                     —   
+  14    AnnualSales                   money           NULL        —                     —   
+  15    BankName                      nvarchar](50    NULL        —                     —   
+  16    MinPaymentType                tinyint         NULL        —                     —   
+  17    MinPaymentAmount              money           NULL        —                     —   
+  18    AnnualRevenue                 money           NULL        —                     —   
+  19    YearOpened                    INT             NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimReseller_1  →  (ResellerKey)
+
+  Foreign Keys:
+    GeographyKey  →  DimGeography.GeographyKey
+
+
+══════════════════════════════════════ TABLE: DimSalesReason ═══════════════════════════════════════
+
+  Rows: 10
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     SalesReasonKey                int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     SalesReasonAlternateKey       INT             NOT NULL    —                     —   
+  2     SalesReasonName               nvarchar(50)    NOT NULL    —                     —   
+  3     SalesReasonReasonType         nvarchar(50)    NOT NULL    —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimSalesReason_1  →  (SalesReasonKey)
+
+
+═════════════════════════════════════ TABLE: DimSalesTerritory ═════════════════════════════════════
+
+  Rows: 11
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     SalesTerritoryKey             int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     SalesTerritoryAlternateKey    INT             NULL        —                     —   
+  2     SalesTerritoryRegion          nvarchar(50)    NOT NULL    —                     —   
+  3     SalesTerritoryCountry         nvarchar(50)    NOT NULL    —                     —   
+  4     SalesTerritoryGroup           nvarchar(50)    NULL        —                     —   
+  5     SalesTerritoryImage           varbinary(255)  NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_DimSalesTerritory_1  →  (SalesTerritoryKey)
+
+
+═════════════════════════════════════ TABLE: FactCurrencyRate ══════════════════════════════════════
+
+  Rows: 14,264
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     CurrencyKey                   INT             NOT NULL    —                     1   
+  1     DateKey                       INT             NOT NULL    —                     2   
+  2     AverageRate                   float           NOT NULL    —                     —   
+  3     EndOfDayRate                  float           NOT NULL    —                     —   
+  4     Date                          datetime        NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_FactCurrencyRate_1  →  (CurrencyKey, DateKey)
+
+  Foreign Keys:
+    CurrencyKey  →  DimCurrency.CurrencyKey
+    DateKey  →  DimDate.DateKey
+
+
+═════════════════════════════════════ TABLE: FactInternetSales ═════════════════════════════════════
+
+  Rows: 60,398
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     ProductKey                    INT             NOT NULL    —                     —   
+  1     OrderDateKey                  INT             NOT NULL    —                     —   
+  2     DueDateKey                    INT             NOT NULL    —                     —   
+  3     ShipDateKey                   INT             NOT NULL    —                     —   
+  4     CustomerKey                   INT             NOT NULL    —                     —   
+  5     PromotionKey                  INT             NOT NULL    —                     —   
+  6     CurrencyKey                   INT             NOT NULL    —                     —   
+  7     SalesTerritoryKey             INT             NOT NULL    —                     —   
+  8     SalesOrderNumber              nvarchar(20)    NOT NULL    —                     1   
+  9     SalesOrderLineNumber          tinyint         NOT NULL    —                     2   
+  10    RevisionNumber                tinyint         NOT NULL    —                     —   
+  11    OrderQuantity                 smallint        NOT NULL    —                     —   
+  12    UnitPrice                     money           NOT NULL    —                     —   
+  13    ExtendedAmount                money           NOT NULL    —                     —   
+  14    UnitPriceDiscountPct          float           NOT NULL    —                     —   
+  15    DiscountAmount                float           NOT NULL    —                     —   
+  16    ProductStandardCost           money           NOT NULL    —                     —   
+  17    TotalProductCost              money           NOT NULL    —                     —   
+  18    SalesAmount                   money           NOT NULL    —                     —   
+  19    TaxAmt                        money           NOT NULL    —                     —   
+  20    Freight                       money           NOT NULL    —                     —   
+  21    CarrierTrackingNumber         nvarchar(25)    NULL        —                     —   
+  22    CustomerPONumber              nvarchar(25)    NULL        —                     —   
+  23    OrderDate                     datetime        NULL        —                     —   
+  24    DueDate                       datetime        NULL        —                     —   
+  25    ShipDate                      datetime        NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_FactInternetSales_1  →  (SalesOrderNumber, SalesOrderLineNumber)
+
+  Foreign Keys:
+    SalesTerritoryKey  →  DimSalesTerritory.SalesTerritoryKey
+    PromotionKey  →  DimPromotion.PromotionKey
+    ShipDateKey  →  DimDate.DateKey
+    DueDateKey  →  DimDate.DateKey
+    OrderDateKey  →  DimDate.DateKey
+    CustomerKey  →  DimCustomer.CustomerKey
+    CurrencyKey  →  DimCurrency.CurrencyKey
+
+
+══════════════════════════════════ TABLE: FactInternetSalesReason ══════════════════════════════════
+
+  Rows: 64,515
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     SalesOrderNumber              nvarchar(20)    NOT NULL    —                     1   
+  1     SalesOrderLineNumber          tinyint         NOT NULL    —                     2   
+  2     SalesReasonKey                INT             NOT NULL    —                     3   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_FactInternetSalesReason_1  →  (SalesOrderNumber, SalesOrderLineNumber, SalesReasonKey)
+
+  Foreign Keys:
+    SalesReasonKey  →  DimSalesReason.SalesReasonKey
+    SalesOrderNumber  →  FactInternetSales.SalesOrderNumber
+    SalesOrderLineNumber  →  FactInternetSales.SalesOrderLineNumber
+
+
+═════════════════════════════════════ TABLE: FactResellerSales ═════════════════════════════════════
+
+  Rows: 58,820
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     ProductKey                    INT             NOT NULL    —                     —   
+  1     OrderDateKey                  INT             NOT NULL    —                     —   
+  2     DueDateKey                    INT             NOT NULL    —                     —   
+  3     ShipDateKey                   INT             NOT NULL    —                     —   
+  4     ResellerKey                   INT             NOT NULL    —                     —   
+  5     EmployeeKey                   INT             NOT NULL    —                     —   
+  6     PromotionKey                  INT             NOT NULL    —                     —   
+  7     CurrencyKey                   INT             NOT NULL    —                     —   
+  8     SalesTerritoryKey             INT             NOT NULL    —                     —   
+  9     SalesOrderNumber              nvarchar](20    NOT NULL    —                     1   
+  10    SalesOrderLineNumber          tinyint         NOT NULL    —                     2   
+  11    RevisionNumber                tinyint         NULL        —                     —   
+  12    OrderQuantity                 smallint        NULL        —                     —   
+  13    UnitPrice                     money           NULL        —                     —   
+  14    ExtendedAmount                money           NULL        —                     —   
+  15    UnitPriceDiscountPct          float           NULL        —                     —   
+  16    DiscountAmount                float           NULL        —                     —   
+  17    ProductStandardCost           money           NULL        —                     —   
+  18    TotalProductCost              money           NULL        —                     —   
+  19    SalesAmount                   money           NULL        —                     —   
+  20    TaxAmt                        money           NULL        —                     —   
+  21    Freight                       money           NULL        —                     —   
+  22    CarrierTrackingNumber         nvarchar](25    NULL        —                     —   
+  23    CustomerPONumber              nvarchar](25    NULL        —                     —   
+  24    OrderDate                     datetime        NULL        —                     —   
+  25    DueDate                       datetime        NULL        —                     —   
+  26    ShipDate                      datetime        NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_FactResellerSales_1  →  (SalesOrderNumber, SalesOrderLineNumber)
+
+  Foreign Keys:
+    SalesTerritoryKey  →  DimSalesTerritory.SalesTerritoryKey
+    ResellerKey  →  DimReseller.ResellerKey
+    PromotionKey  →  DimPromotion.PromotionKey
+    ProductKey  →  DimProduct.ProductKey
+    EmployeeKey  →  DimEmployee.EmployeeKey
+    ShipDateKey  →  DimDate.DateKey
+    DueDateKey  →  DimDate.DateKey
+    OrderDateKey  →  DimDate.DateKey
+    CurrencyKey  →  DimCurrency.CurrencyKey
+
+
+════════════════════════════════════ TABLE: FactSurveyResponse ═════════════════════════════════════
+
+  Rows: 2,727
+
+  #     Column                        Type            Nullable    Default               PK  
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  0     SurveyResponseKey             int IDENTITY(1,1)  NOT NULL    —                     1   
+  1     DateKey                       INT             NOT NULL    —                     —   
+  2     CustomerKey                   INT             NOT NULL    —                     —   
+  3     ProductCategoryKey            INT             NOT NULL    —                     —   
+  4     EnglishProductCategoryName    nvarchar(50)    NOT NULL    —                     —   
+  5     ProductSubcategoryKey         INT             NOT NULL    —                     —   
+  6     EnglishProductSubcategoryName  nvarchar(50)    NOT NULL    —                     —   
+  7     Date                          datetime        NULL        —                     —   
+
+  Indexes:
+    UNIQUE   sqlite_autoindex_FactSurveyResponse_1  →  (SurveyResponseKey)
+
+  Foreign Keys:
+    CustomerKey  →  DimCustomer.CustomerKey
+    DateKey  →  DimDate.DateKey
+
+
+═════════════════════════════════════════ INTEGRITY CHECK ══════════════════════════════════════════
+
+  ok
+
+
+════════════════════════════════════════ FOREIGN KEY CHECK ═════════════════════════════════════════
+
+  ISSUE: {'table': 'DimProduct', 'rowid': 1, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 2, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 3, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 4, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 5, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 6, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 7, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 8, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 9, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 10, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 11, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 12, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 13, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 14, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 15, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 16, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 17, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 18, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 19, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 20, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 21, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 22, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 23, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 24, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 25, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 26, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 27, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 28, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 29, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 30, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 31, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 32, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 33, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 34, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 35, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 36, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 37, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 38, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 39, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 40, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 41, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 42, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 43, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 44, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 45, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 46, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 47, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 48, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 49, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 50, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 51, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 52, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 53, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 54, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 55, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 56, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 57, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 58, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 59, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 60, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 61, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 62, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 63, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 64, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 65, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 66, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 67, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 68, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 69, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 70, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 71, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 72, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 73, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 74, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 75, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 76, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 77, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 78, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 79, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 80, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 81, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 82, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 83, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 84, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 85, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 86, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 87, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 88, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 89, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 90, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 91, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 92, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 93, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 94, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 95, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 96, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 97, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 98, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 99, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 100, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 101, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 102, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 103, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 104, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 105, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 106, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 107, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 108, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 109, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 110, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 111, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 112, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 113, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 114, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 115, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 116, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 117, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 118, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 119, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 120, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 121, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 122, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 123, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 124, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 125, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 126, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 127, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 128, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 129, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 130, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 131, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 132, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 133, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 134, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 135, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 136, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 137, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 138, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 139, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 140, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 141, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 142, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 143, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 144, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 145, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 146, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 147, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 148, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 149, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 150, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 151, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 152, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 153, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 154, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 155, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 156, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 157, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 158, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 159, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 160, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 161, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 162, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 163, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 164, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 165, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 166, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 167, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 168, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 169, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 170, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 171, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 172, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 173, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 174, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 175, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 176, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 177, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 178, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 179, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 180, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 181, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 182, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 183, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 184, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 185, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 186, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 187, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 188, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 189, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 190, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 191, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 192, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 193, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 194, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 195, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 196, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 197, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 198, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 199, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 200, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 201, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 202, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 203, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 204, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 205, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 206, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 207, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 208, 'parent': 'DimProductSubCategory', 'fkid': 0}
+  ISSUE: {'table': 'DimProduct', 'rowid': 209, 'parent': 'DimProductSubCategory', 'fkid': 0}
+
+
+═════════════════════════════════ FULL SCHEMA (CREATE STATEMENTS) ══════════════════════════════════
+
+CREATE VIEW customer_address_us  as
+select CustomerKey, AddressLine1, AddressLine2, C.GeographyKey from DimCustomer C
+join DimGeography G ON C.GeographyKey = G.GeographyKey
+where  CountryRegionCode = 'US'
+
+CREATE VIEW customer_email_a as
+select CustomerKey, EmailAddress from DimCustomer
+where  EmailAddress like '%a%@adventure-works.com'
+
+CREATE TABLE DimCurrency(
+	CurrencyKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	CurrencyAlternateKey nchar(3) NOT NULL,
+	CurrencyName nvarchar(50) NOT NULL
+)
+
+CREATE TABLE DimCustomer(
+	CustomerKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	GeographyKey int NULL,
+	CustomerAlternateKey nvarchar(15) NOT NULL,
+	Title nvarchar(8) NULL,
+	FirstName nvarchar(50) NULL,
+	MiddleName nvarchar(50) NULL,
+	LastName nvarchar(50) NULL,
+	NameStyle bit NULL,
+	BirthDate date NULL,
+	MaritalStatus nchar(1) NULL,
+	Suffix nvarchar(10) NULL,
+	Gender nvarchar(1) NULL,
+	EmailAddress nvarchar(50) NULL,
+	YearlyIncome money NULL,
+	TotalChildren tinyint NULL,
+	NumberChildrenAtHome tinyint NULL,
+	EnglishEducation nvarchar(40) NULL,
+	SpanishEducation nvarchar(40) NULL,
+	FrenchEducation nvarchar(40) NULL,
+	EnglishOccupation nvarchar(100) NULL,
+	SpanishOccupation nvarchar(100) NULL,
+	FrenchOccupation nvarchar(100) NULL,
+	HouseOwnerFlag nchar(1) NULL,
+	NumberCarsOwned tinyint NULL,
+	AddressLine1 nvarchar(120) NULL,
+	AddressLine2 nvarchar(120) NULL,
+	Phone nvarchar(20) NULL,
+	DateFirstPurchase date NULL,
+	CommuteDistance nvarchar(15) NULL,
+	FOREIGN KEY (GeographyKey) REFERENCES DimGeography(GeographyKey)
+)
+
+CREATE TABLE DimDate(
+	DateKey int NOT NULL PRIMARY KEY,
+	FullDateAlternateKey date NOT NULL,
+	DayNumberOfWeek tinyint NOT NULL,
+	EnglishDayNameOfWeek nvarchar(10) NOT NULL,
+	SpanishDayNameOfWeek nvarchar(10) NOT NULL,
+	FrenchDayNameOfWeek nvarchar(10) NOT NULL,
+	DayNumberOfMonth tinyint NOT NULL,
+	DayNumberOfYear smallint NOT NULL,
+	WeekNumberOfYear tinyint NOT NULL,
+	EnglishMonthName nvarchar(10) NOT NULL,
+	SpanishMonthName nvarchar(10) NOT NULL,
+	FrenchMonthName nvarchar(10) NOT NULL,
+	MonthNumberOfYear tinyint NOT NULL,
+	CalendarQuarter tinyint NOT NULL,
+	CalendarYear smallint NOT NULL,
+	CalendarSemester tinyint NOT NULL,
+	FiscalQuarter tinyint NOT NULL,
+	FiscalYear smallint NOT NULL,
+	FiscalSemester tinyint NOT NULL
+)
+
+CREATE TABLE DimDepartmentGroup(
+	DepartmentGroupKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	ParentDepartmentGroupKey int NULL,
+	DepartmentGroupName nvarchar(50) NULL
+)
+
+CREATE TABLE DimEmployee(
+	EmployeeKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	ParentEmployeeKey int NULL,
+	EmployeeNationalIDAlternateKey nvarchar(15) NULL,
+	ParentEmployeeNationalIDAlternateKey nvarchar(15) NULL,
+	SalesTerritoryKey int NULL,
+	FirstName nvarchar(50) NOT NULL,
+	LastName nvarchar(50) NOT NULL,
+	MiddleName nvarchar(50) NULL,
+	NameStyle bit NOT NULL,
+	Title nvarchar(50) NULL,
+	HireDate date NULL,
+	BirthDate date NULL,
+	LoginID nvarchar(256) NULL,
+	EmailAddress nvarchar(50) NULL,
+	Phone nvarchar(25) NULL,
+	MaritalStatus nchar(1) NULL,
+	EmergencyContactName nvarchar(50) NULL,
+	EmergencyContactPhone nvarchar(25) NULL,
+	SalariedFlag bit NULL,
+	Gender nchar(1) NULL,
+	PayFrequency tinyint NULL,
+	BaseRate money NULL,
+	VacationHours smallint NULL,
+	SickLeaveHours smallint NULL,
+	CurrentFlag bit NOT NULL,
+	SalesPersonFlag bit NOT NULL,
+	DepartmentName nvarchar(50) NULL,
+	StartDate date NULL,
+	EndDate date NULL,
+	Status nvarchar(50) NULL,
+	EmployeePhoto varbinary NULL,
+	FOREIGN KEY (SalesTerritoryKey) REFERENCES DimSalesTerritory(SalesTerritoryKey)
+)
+
+CREATE TABLE DimGeography(
+	GeographyKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	City nvarchar(30) NULL,
+	StateProvinceCode nvarchar(3) NULL,
+	StateProvinceName nvarchar(50) NULL,
+	CountryRegionCode nvarchar(3) NULL,
+	EnglishCountryRegionName nvarchar(50) NULL,
+	SpanishCountryRegionName nvarchar(50) NULL,
+	FrenchCountryRegionName nvarchar(50) NULL,
+	PostalCode nvarchar(15) NULL,
+	SalesTerritoryKey int NULL,
+	IpAddressLocator nvarchar(15) NULL,
+	FOREIGN KEY (SalesTerritoryKey) REFERENCES DimSalesTerritory(SalesTerritoryKey)
+)
+
+CREATE TABLE DimOrganization(
+	OrganizationKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	ParentOrganizationKey int NULL,
+	PercentageOfOwnership nvarchar(16) NULL,
+	OrganizationName nvarchar(50) NULL,
+	CurrencyKey int NULL,
+	FOREIGN KEY (CurrencyKey) REFERENCES DimCurrency(CurrencyKey)
+)
+
+CREATE TABLE DimProduct(
+	ProductKey int IDENTITY(1,1) PRIMARY KEY,
+	ProductAlternateKey nvarchar(25) NULL,
+	ProductSubcategoryKey int NULL,
+	WeightUnitMeasureCode nchar(3) NULL,
+	SizeUnitMeasureCode nchar(3) NULL,
+	EnglishProductName nvarchar(50) NOT NULL,
+	SpanishProductName nvarchar(50) NOT NULL,
+	FrenchProductName nvarchar(50) NOT NULL,
+	StandardCost money NULL,
+	FinishedGoodsFlag bit NOT NULL,
+	Color nvarchar(15) NOT NULL,
+	SafetyStockLevel smallint NULL,
+	ReorderPoint smallint NULL,
+	ListPrice money NULL,
+	Size nvarchar(50) NULL,
+	SizeRange nvarchar(50) NULL,
+	Weight float NULL,
+	DaysToManufacture int NULL,
+	ProductLine nchar(2) NULL,
+	DealerPrice money NULL,
+	Class nchar(2) NULL,
+	Style nchar(2) NULL,
+	ModelName nvarchar(50) NULL,
+	LargePhoto varbinary  NULL,
+	EnglishDescription nvarchar(400) NULL,
+	FrenchDescription nvarchar(400) NULL,
+	ChineseDescription nvarchar(400) NULL,
+	ArabicDescription nvarchar(400) NULL,
+	HebrewDescription nvarchar(400) NULL,
+	ThaiDescription nvarchar(400) NULL,
+	GermanDescription nvarchar(400) NULL,
+	JapaneseDescription nvarchar(400) NULL,
+	TurkishDescription nvarchar(400) NULL,
+	StartDate datetime NULL,
+	EndDate datetime NULL,
+	Status nvarchar(7) NULL,
+	FOREIGN KEY (ProductSubCategoryKey) REFERENCES DimProductSubCategory(ProductSubCategoryKey)
+)
+
+CREATE TABLE DimProductCategory(
+	ProductCategoryKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	ProductCategoryAlternateKey int NULL,
+	EnglishProductCategoryName nvarchar(50) NOT NULL,
+	SpanishProductCategoryName nvarchar(50) NOT NULL,
+	FrenchProductCategoryName nvarchar(50) NOT NULL
+)
+
+CREATE TABLE DimProductSubcategory(
+	ProductSubcategoryKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	ProductSubcategoryAlternateKey int NULL,
+	EnglishProductSubcategoryName nvarchar(50) NOT NULL,
+	SpanishProductSubcategoryName nvarchar(50) NOT NULL,
+	FrenchProductSubcategoryName nvarchar(50) NOT NULL,
+	ProductCategoryKey int NULL,
+	FOREIGN KEY (ProductCategoryKey) REFERENCES DimProductCategory(ProductCategoryKey)
+)
+
+CREATE TABLE DimPromotion(
+	PromotionKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	PromotionAlternateKey int NULL,
+	EnglishPromotionName nvarchar(255) NULL,
+	SpanishPromotionName nvarchar(255) NULL,
+	FrenchPromotionName nvarchar(255) NULL,
+	DiscountPct float NULL,
+	EnglishPromotionType nvarchar(50) NULL,
+	SpanishPromotionType nvarchar(50) NULL,
+	FrenchPromotionType nvarchar(50) NULL,
+	EnglishPromotionCategory nvarchar(50) NULL,
+	SpanishPromotionCategory nvarchar(50) NULL,
+	FrenchPromotionCategory nvarchar(50) NULL,
+	StartDate datetime NOT NULL,
+	EndDate datetime NULL,
+	MinQty int NULL,
+	MaxQty int NULL
+)
+
+CREATE TABLE [DimReseller](
+	[ResellerKey] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[GeographyKey] [int] NULL,
+	[ResellerAlternateKey] [nvarchar](15) NULL,
+	[Phone] [nvarchar](25) NULL,
+	[BusinessType] [varchar](20) NOT NULL,
+	[ResellerName] [nvarchar](50) NOT NULL,
+	[NumberEmployees] [int] NULL,
+	[OrderFrequency] [char](1) NULL,
+	[OrderMonth] [tinyint] NULL,
+	[FirstOrderYear] [int] NULL,
+	[LastOrderYear] [int] NULL,
+	[ProductLine] [nvarchar](50) NULL,
+	[AddressLine1] [nvarchar](60) NULL,
+	[AddressLine2] [nvarchar](60) NULL,
+	[AnnualSales] [money] NULL,
+	[BankName] [nvarchar](50) NULL,
+	[MinPaymentType] [tinyint] NULL,
+	[MinPaymentAmount] [money] NULL,
+	[AnnualRevenue] [money] NULL,
+	[YearOpened] [int] NULL,
+	FOREIGN KEY (GeographyKey) REFERENCES DimGeography(GeographyKey)
+)
+
+CREATE TABLE DimSalesReason(
+	SalesReasonKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	SalesReasonAlternateKey int NOT NULL,
+	SalesReasonName nvarchar(50) NOT NULL,
+	SalesReasonReasonType nvarchar(50) NOT NULL
+)
+
+CREATE TABLE DimSalesTerritory(
+	SalesTerritoryKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	SalesTerritoryAlternateKey int NULL,
+	SalesTerritoryRegion nvarchar(50) NOT NULL,
+	SalesTerritoryCountry nvarchar(50) NOT NULL,
+	SalesTerritoryGroup nvarchar(50) NULL,
+	SalesTerritoryImage varbinary(255) NULL
+)
+
+CREATE TABLE FactCurrencyRate(
+	CurrencyKey int NOT NULL,
+	DateKey int NOT NULL,
+	AverageRate float NOT NULL,
+	EndOfDayRate float NOT NULL,
+	Date datetime NULL,
+	PRIMARY KEY (CurrencyKey,DateKey),
+	FOREIGN KEY(DateKey) REFERENCES DimDate(DateKey),
+	FOREIGN KEY(CurrencyKey) REFERENCES DimCurrency(CurrencyKey)
+)
+
+CREATE TABLE FactInternetSales(
+	ProductKey int NOT NULL,
+	OrderDateKey int NOT NULL,
+	DueDateKey int NOT NULL,
+	ShipDateKey int NOT NULL,
+	CustomerKey int NOT NULL,
+	PromotionKey int NOT NULL,
+	CurrencyKey int NOT NULL,
+	SalesTerritoryKey int NOT NULL,
+	SalesOrderNumber nvarchar(20) NOT NULL,
+	SalesOrderLineNumber tinyint NOT NULL,
+	RevisionNumber tinyint NOT NULL,
+	OrderQuantity smallint NOT NULL,
+	UnitPrice money NOT NULL,
+	ExtendedAmount money NOT NULL,
+	UnitPriceDiscountPct float NOT NULL,
+	DiscountAmount float NOT NULL,
+	ProductStandardCost money NOT NULL,
+	TotalProductCost money NOT NULL,
+	SalesAmount money NOT NULL,
+	TaxAmt money NOT NULL,
+	Freight money NOT NULL,
+	CarrierTrackingNumber nvarchar(25) NULL,
+	CustomerPONumber nvarchar(25) NULL,
+	OrderDate datetime NULL,
+	DueDate datetime NULL,
+	ShipDate datetime NULL,
+	PRIMARY KEY(SalesOrderNumber,SalesOrderLineNumber),
+	FOREIGN KEY(CurrencyKey) REFERENCES DimCurrency(CurrencyKey),
+	FOREIGN KEY(CustomerKey) REFERENCES DimCustomer(CustomerKey),
+	FOREIGN KEY(OrderDateKey) REFERENCES DimDate(DateKey),
+	FOREIGN KEY(DueDateKey) REFERENCES DimDate(DateKey),
+	FOREIGN KEY(ShipDateKey) REFERENCES DimDate(DateKey),
+	--FOREIGN KEY(ProductKey) REFERENCES DimProduct(ProductKey)
+	FOREIGN KEY(PromotionKey) REFERENCES DimPromotion(PromotionKey),
+	FOREIGN KEY(SalesTerritoryKey) REFERENCES DimSalesTerritory(SalesTerritoryKey)
+)
+
+CREATE TABLE FactInternetSalesReason(
+	SalesOrderNumber nvarchar(20) NOT NULL,
+	SalesOrderLineNumber tinyint NOT NULL,
+	SalesReasonKey int NOT NULL,
+	PRIMARY KEY (SalesOrderNumber,SalesOrderLineNumber,SalesReasonKey),
+	FOREIGN KEY(SalesOrderNumber,SalesOrderLineNumber) REFERENCES FactInternetSales(SalesOrderNumber, SalesOrderLineNumber),
+	FOREIGN KEY(SalesReasonKey) REFERENCES DimSalesReason(SalesReasonKey)
+)
+
+CREATE TABLE [FactResellerSales](
+	[ProductKey] [int] NOT NULL,
+	[OrderDateKey] [int] NOT NULL,
+	[DueDateKey] [int] NOT NULL,
+	[ShipDateKey] [int] NOT NULL,
+	[ResellerKey] [int] NOT NULL,
+	[EmployeeKey] [int] NOT NULL,
+	[PromotionKey] [int] NOT NULL,
+	[CurrencyKey] [int] NOT NULL,
+	[SalesTerritoryKey] [int] NOT NULL,
+	[SalesOrderNumber] [nvarchar](20) NOT NULL,
+	[SalesOrderLineNumber] [tinyint] NOT NULL,
+	[RevisionNumber] [tinyint] NULL,
+	[OrderQuantity] [smallint] NULL,
+	[UnitPrice] [money] NULL,
+	[ExtendedAmount] [money] NULL,
+	[UnitPriceDiscountPct] [float] NULL,
+	[DiscountAmount] [float] NULL,
+	[ProductStandardCost] [money] NULL,
+	[TotalProductCost] [money] NULL,
+	[SalesAmount] [money] NULL,
+	[TaxAmt] [money] NULL,
+	[Freight] [money] NULL,
+	[CarrierTrackingNumber] [nvarchar](25) NULL,
+	[CustomerPONumber] [nvarchar](25) NULL,
+	[OrderDate] [datetime] NULL,
+	[DueDate] [datetime] NULL,
+	[ShipDate] [datetime] NULL,
+	PRIMARY KEY (SalesOrderNumber, SalesOrderLineNumber),
+	FOREIGN KEY(CurrencyKey) REFERENCES DimCurrency(CurrencyKey),
+	FOREIGN KEY(OrderDateKey) REFERENCES DimDate(DateKey),
+	FOREIGN KEY(DueDateKey) REFERENCES DimDate(DateKey),
+	FOREIGN KEY(ShipDateKey) REFERENCES DimDate(DateKey),
+	FOREIGN KEY(EmployeeKey) REFERENCES DimEmployee(EmployeeKey),
+	FOREIGN KEY(ProductKey) REFERENCES DimProduct(ProductKey),
+	FOREIGN KEY(PromotionKey) REFERENCES DimPromotion(PromotionKey),
+	FOREIGN KEY(ResellerKey) REFERENCES DimReseller(ResellerKey),
+	FOREIGN KEY(SalesTerritoryKey) REFERENCES DimSalesTerritory(SalesTerritoryKey)
+	)
+
+CREATE TABLE FactSurveyResponse(
+	SurveyResponseKey int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	DateKey int NOT NULL,
+	CustomerKey int NOT NULL,
+	ProductCategoryKey int NOT NULL,
+	EnglishProductCategoryName nvarchar(50) NOT NULL,
+	ProductSubcategoryKey int NOT NULL,
+	EnglishProductSubcategoryName nvarchar(50) NOT NULL,
+	Date datetime NULL,
+	FOREIGN KEY (DateKey) REFERENCES DimDate(DateKey),
+	FOREIGN KEY (CustomerKey) REFERENCES DimCustomer(CustomerKey)
+	
+)
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  End of documentation — 19 tables
+════════════════════════════════════════════════════════════════════════════════════════════════════
