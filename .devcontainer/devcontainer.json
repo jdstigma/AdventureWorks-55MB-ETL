@@ -1,0 +1,19 @@
+{
+  "name": "AdventureWorks ETL",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  "features": {
+    "ghcr.io/devcontainers/features/git-lfs:1": {}
+  },
+
+  "postCreateCommand": "git lfs pull && echo '── LFS pull complete ──' && find . -name '*.db' -exec echo 'Found: {}' \\; && find . -name '*.db' | head -1 | xargs -I{} sqlite3 {} .tables",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "alexcvzz.vscode-sqlite",
+        "qwtel.sqlite-viewer"
+      ]
+    }
+  }
+}

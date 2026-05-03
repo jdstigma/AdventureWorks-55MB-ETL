@@ -1,0 +1,34 @@
+name: Pull LFS Files and Open Database
+
+on:
+  push:
+    paths:
+      - '**.db'        # re-runs if a new .db is pushed
+
+jobs:
+  open-database:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Pull all LFS files
+        run: git lfs pull
+
+      - name: Verify database files
+        run: |
+          echo "── LFS tracked files ──"
+          git lfs ls-files
+          echo ""
+          echo "── Database file sizes ──"
+          find . -name "*.db" -exec ls -lh {} \;
+
+      - name: Confirm SQLite can open each .db
+        run: |
+          for db in $(find . -name "*.db"); do
+            echo "Testing $db..."
+            sqlite3 "$db" "SELECT name FROM sqlite_master WHERE type='table';" && echo "  ✓ OK" || echo "  ✗ FAILED"
+          done
