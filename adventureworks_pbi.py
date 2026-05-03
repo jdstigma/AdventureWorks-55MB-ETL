@@ -3,7 +3,7 @@ import pandas as pd
 
 # ── Connection ────────────────────────────────────────────────────────────────
 # Update this path to match where your .db file lives locally
-DB_PATH = r'C:\path\to\AdventureWorks.db'
+DB_PATH = r"C:\Users\jdsti\Documents\AdventureWorks-55MB-ETL\AdventureWorks.db"
 
 conn = sqlite3.connect(DB_PATH)
 
