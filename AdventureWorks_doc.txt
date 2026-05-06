@@ -2,14 +2,14 @@
   DATABASE DOCUMENTATION
   File    : /home/runner/work/AdventureWorks-55MB-ETL/AdventureWorks-55MB-ETL/AdventureWorks.db
   Size    : 51.82 MB
-  Created : 2026-05-06 21:48
+  Created : 2026-05-06 21:52
 ════════════════════════════════════════════════════════════════════════════════════════════════════
 
 ═════════════════════════════════════════ DATABASE SUMMARY ═════════════════════════════════════════
 
-  Tables                    20
-  Total Columns             269
-  Total Rows                225,338
+  Tables                    19
+  Total Columns             263
+  Total Rows                225,322
   Indexes                   19
   Foreign Keys              30
   File Size                 51.82 MB
@@ -30,7 +30,6 @@
     DimCurrency                    105  
     DimProductSubcategory           37  
     DimPromotion                    16  
-    RegressionResults               16  
     DimOrganization                 14  
     DimSalesTerritory               11  
     DimSalesReason                  10  
@@ -61,7 +60,6 @@
   FactInternetSalesReason         3           64,515        SalesOrderNumber, SalesOrderLineNumber, SalesReasonKey
   FactResellerSales               27          58,820        SalesOrderNumber, SalesOrderLineNumber  
   FactSurveyResponse              8           2,727         SurveyResponseKey                       
-  RegressionResults               6           16            —                                       
 
 ════════════════════════════════════════ TABLE: DimCurrency ════════════════════════════════════════
 
@@ -587,20 +585,6 @@
   Foreign Keys:
     CustomerKey  →  DimCustomer.CustomerKey
     DateKey  →  DimDate.DateKey
-
-
-═════════════════════════════════════ TABLE: RegressionResults ═════════════════════════════════════
-
-  Rows: 16
-
-  #     Column                        Type            Nullable    Default               PK  
-  ──────────────────────────────────────────────────────────────────────────────────────────────────
-  0     Target                        TEXT            NULL        —                     —   
-  1     Feature                       TEXT            NULL        —                     —   
-  2     Coefficient                   REAL            NULL        —                     —   
-  3     R2_Score                      REAL            NULL        —                     —   
-  4     RMSE                          REAL            NULL        —                     —   
-  5     Run_Timestamp                 TEXT            NULL        —                     —   
 
 
 ═════════════════════════════════════════ INTEGRITY CHECK ══════════════════════════════════════════
@@ -1187,15 +1171,6 @@ CREATE TABLE FactSurveyResponse(
 	
 )
 
-CREATE TABLE "RegressionResults" (
-"Target" TEXT,
-  "Feature" TEXT,
-  "Coefficient" REAL,
-  "R2_Score" REAL,
-  "RMSE" REAL,
-  "Run_Timestamp" TEXT
-)
-
 ════════════════════════════════════════════════════════════════════════════════════════════════════
-  End of documentation — 20 tables
+  End of documentation — 19 tables
 ════════════════════════════════════════════════════════════════════════════════════════════════════
