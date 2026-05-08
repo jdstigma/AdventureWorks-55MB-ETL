@@ -5,22 +5,25 @@ Further details as to the order to view the sources and their details will be tr
 
 Directory Tree -- Repo File Tree with summary of file --
 
-├── AdventureWorks.db                  -- Datbase file used for the whole project --
+## ├── AdventureWorks.db                  -- Datbase file used for the whole project --
+
 ├── AdventureWorks_doc.txt             -- .txt output of new documentation --
+
 ├── README.md                          -- Explains details of the Repo --
+
 ├── adventureworks_pbi.py              -- Python script to create large summary --
 
 ├── db_doc.py                          -- Python script to create large summary --
 
 ├── dot-documentation.html             -- Documentation created using .dot commnds --
 
-├── notebooks                          -- jupyter notebook to run regression --
+## ├── notebooks                          -- jupyter notebook to run regression --
 
 │   ├── regression_analysis.ipynb      -- Regression analysis script -- 
 
 │   └── regression_pipeline.py         -- Python script creates pipeline for regression --
 
-├── outputs                            -- csv outputs produced for regression analysis --
+## ├── outputs                            -- csv outputs produced for regression analysis --
 
 │   ├── regression_results_20260506_202735.csv       -- Data to analyze regression --
 
@@ -28,7 +31,7 @@ Directory Tree -- Repo File Tree with summary of file --
 
 │   └── regression_results_20260506_215233.csv       -- Data to analyze regression --
 
-├── png charts                                       -- png files created by jupyter notebook --
+## ├── png charts                                       -- png files created by jupyter notebook --
 
 │   ├── confusion_matrix_bucketed.png                -- png chart for download --
 
@@ -48,4 +51,4 @@ Directory Tree -- Repo File Tree with summary of file --
 
 │   └── rf_importance_SalesAmount.png                -- png chart for download --
 
-└── png_charts.zip                       -- zip file containing all the individual png charts --
+### └── png_charts.zip                       -- zip file containing all the individual png charts --
