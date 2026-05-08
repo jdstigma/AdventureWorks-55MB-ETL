@@ -5,7 +5,7 @@ Further details as to the order to view the sources and their details will be tr
 
 Directory Tree -- Repo File Tree with summary of file --
 
-## ├── AdventureWorks.db                  ---Datbase file used for the whole project
+# ├── AdventureWorks.db                  ---Datbase file used for the whole project
 
 ├── AdventureWorks_doc.txt             ---.txt output of new documentation
 
