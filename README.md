@@ -6,11 +6,8 @@ Further details as to the order to view the sources and their details will be tr
 Directory Tree -- Repo File Tree with summary of file --
 
 ├── AdventureWorks.db                  -- Datbase file used for the whole project --
-
 ├── AdventureWorks_doc.txt             -- .txt output of new documentation --
-
 ├── README.md                          -- Explains details of the Repo --
-
 ├── adventureworks_pbi.py              -- Python script to create large summary --
 
 ├── db_doc.py                          -- Python script to create large summary --
