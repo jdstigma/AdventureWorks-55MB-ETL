@@ -1,4 +1,4 @@
-# The script pulls the local path to the database, and then, creates all the dimension and fact tables
+# The script pulls the local path to the database, and then, creates all the dimension and fact tables.
 # This script is too unique to apply to other datasets. However, it may be a good idea to create a template for connection and creation of data.
 import sqlite3
 import pandas as pd
