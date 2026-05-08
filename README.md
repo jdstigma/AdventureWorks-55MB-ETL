@@ -3,9 +3,9 @@ Repo is designed to be a project demonstration of the full ETL process from raw 
 
 Further details as to the order to view the sources and their details will be tracked here.
 
-Directory Tree -- Repo File Tree with summary of file --
+# Directory Tree -- Repo File Tree with summary of file --
 
-# ├── AdventureWorks.db                  ---Datbase file used for the whole project
+├── AdventureWorks.db                  ---Datbase file used for the whole project
 
 ├── AdventureWorks_doc.txt             ---.txt output of new documentation
 
