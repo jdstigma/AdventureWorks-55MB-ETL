@@ -29,13 +29,14 @@ jobs:
             base=$(basename "$db" .db)
             mv db_doc.txt "${base}_doc.txt"
           done
-     - name: Commit documentation
+      - name: Commit documentation
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          cp *_doc.txt /tmp/
           git fetch origin main
-          git checkout -- .
-          git rebase origin/main
+          git reset --hard origin/main
+          cp /tmp/*_doc.txt .
           git add *_doc.txt
           git diff --staged --quiet || git commit -m "Auto-generate database documentation [skip ci]"
           git push
