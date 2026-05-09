@@ -1,16 +1,12 @@
 name: Generate Database Documentation
-
 on:
   push:
     branches:
       - main
-
 permissions:
   contents: write
-
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   document:
     runs-on: ubuntu-latest
@@ -20,12 +16,10 @@ jobs:
         with:
           lfs: true
           token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Find and document all .db files
         run: |
           for db in $(find . -name "*.db"); do
@@ -34,11 +28,11 @@ jobs:
             base=$(basename "$db" .db)
             mv db_doc.txt "${base}_doc.txt"
           done
-
       - name: Commit documentation
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
           git add *_doc.txt
           git diff --staged --quiet || git commit -m "Auto-generate database documentation [skip ci]"
           git push
