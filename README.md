@@ -1,7 +1,9 @@
 # Contoso-DW-10M-ETL
 Repo is designed to be a project demonstration of the full ETL process from raw database to Power BI reports, dashboards &amp; apps.
 
-Further details as to the order to view the sources and their details will be tracked here. An additional read me within folders will explain in more detail if needed.
+Data-profiling documentation is created each time the main branch is updated in order to keep all the profiling up to date. 
+
+Further details as to the order to view the sources and their details will be tracked here. 
 
 # Directory Tree -- Repo File Tree with summary of file --
 
